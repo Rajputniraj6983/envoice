@@ -83,95 +83,93 @@ class _previewState extends State<preview> {
                   ],
                 ),
 
-              ),InkWell(
-                 onTap: () async {
-                   Navigator.pushNamed(context, '/pdf');
-                   final pdf = pd.Document();
+              ),Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: IconButton
+                  (
+                   onPressed: () async {
+                     final pdf = pd.Document();
 
-                   pdf.addPage(pd.Page(
-                       pageFormat: PdfPageFormat.a4,
-                       build: (pd.Context context) {
-                         return pd.Center(
-                           child: pd.Column(
-                           children: [
-                             pd.Container(height: 180,width: 390,
-                               child: pd.Column(
-                                 crossAxisAlignment: pd.CrossAxisAlignment.start,
+                     pdf.addPage(pd.Page(
+                         pageFormat: PdfPageFormat.a4,
+                         build: (pd.Context context) {
+                           return pd.Center(
+                             child: pd.Column(
+                             children: [
+                               pd.Container(height: 180,width: 390,
+                                 child: pd.Column(
+                                   crossAxisAlignment: pd.CrossAxisAlignment.start,
+                                   children: [
+                                     pd.Text('Jagdamba sabji bhandar',style: pd.TextStyle(color: PdfColors.white,fontSize: 20,),),
+                                     pd.Text('c-123,124,\nSardar market,\nKadodara highway Road,\n394500',style: pd.TextStyle(color: PdfColors.black,fontSize: 20),),
+                                     pd.Text('+91 982548606',style: pd.TextStyle(color: PdfColors.black,fontSize: 20),)
+                                   ],
+                                 ),
+                               ),
+                               pd.Table(
                                  children: [
-                                   pd.Text('Jagdamba sabji bhandar',style: pd.TextStyle(color: PdfColors.white,fontSize: 20,),),
-                                   pd.Text('c-123,124,\nSardar market,\nKadodara highway Road,\n394500',style: pd.TextStyle(color: PdfColors.black,fontSize: 20),),
-                                   pd.Text('+91 982548606',style: pd.TextStyle(color: PdfColors.black,fontSize: 20),)
+                                   pd.TableRow(
+                                       decoration: pd.BoxDecoration(border: pd.Border.all(width: 2)),
+                                       children: [
+                                         pd.Text(' Product',style: pd.TextStyle(color: PdfColors.black,fontSize: 15,fontWeight: pd.FontWeight.bold),),
+                                         pd.Text(' price',style: pd.TextStyle(color: PdfColors.black,fontSize: 15,fontWeight: pd.FontWeight.bold),),
+                                         pd.Text(' Quantity',style: pd.TextStyle(color: PdfColors.black,fontSize: 15,fontWeight: pd.FontWeight.bold),),
+                                         pd. Text(' Gst',style: pd.TextStyle(color: PdfColors.black,fontSize: 15,fontWeight: pd.FontWeight.bold),),
+                                         pd.Text(' Total amount',style: pd.TextStyle(color: PdfColors.black,fontSize: 15,fontWeight: pd.FontWeight.bold),),
+                                       ]
+                                   ),
+                                   pd.TableRow(
+                                       children: [
+                                         pd. Text('${product}',style: pd.TextStyle(color: PdfColors.black,fontWeight: pd.FontWeight.bold,fontSize: 15),),
+                                         pd.Text('${price}',style: pd.TextStyle(color: PdfColors.black,fontWeight: pd.FontWeight.bold,fontSize: 15),),
+                                         pd. Text('${quantity}',style: pd.TextStyle(color: PdfColors.black,fontWeight: pd.FontWeight.bold,fontSize: 15),),
+                                         pd.Text('${gst}',style: pd.TextStyle(color: PdfColors.black,fontWeight: pd.FontWeight.bold,fontSize: 15),),
+                                         pd.Text('${total }',style: pd.TextStyle(color: PdfColors.black,fontWeight: pd.FontWeight.bold,fontSize: 15),),
+                                       ]
+                                   ),
                                  ],
                                ),
-                             ),
-                             pd.Table(
-                               children: [
-                                 pd.TableRow(
-                                     decoration: pd.BoxDecoration(border: pd.Border.all(width: 2)),
-                                     children: [
-                                       pd.Text(' Product',style: pd.TextStyle(color: PdfColors.black,fontSize: 15,fontWeight: pd.FontWeight.bold),),
-                                       pd.Text(' price',style: pd.TextStyle(color: PdfColors.black,fontSize: 15,fontWeight: pd.FontWeight.bold),),
-                                       pd.Text(' Quantity',style: pd.TextStyle(color: PdfColors.black,fontSize: 15,fontWeight: pd.FontWeight.bold),),
-                                       pd. Text(' Gst',style: pd.TextStyle(color: PdfColors.black,fontSize: 15,fontWeight: pd.FontWeight.bold),),
-                                       pd.Text(' Total amount',style: pd.TextStyle(color: PdfColors.black,fontSize: 15,fontWeight: pd.FontWeight.bold),),
-                                     ]
-                                 ),
-                                 pd.TableRow(
-                                     children: [
-                                       pd. Text('${product}',style: pd.TextStyle(color: PdfColors.black,fontWeight: pd.FontWeight.bold,fontSize: 15),),
-                                       pd.Text('${price}',style: pd.TextStyle(color: PdfColors.black,fontWeight: pd.FontWeight.bold,fontSize: 15),),
-                                       pd. Text('${quantity}',style: pd.TextStyle(color: PdfColors.black,fontWeight: pd.FontWeight.bold,fontSize: 15),),
-                                       pd.Text('${gst}',style: pd.TextStyle(color: PdfColors.black,fontWeight: pd.FontWeight.bold,fontSize: 15),),
-                                       pd.Text('${total }',style: pd.TextStyle(color: PdfColors.black,fontWeight: pd.FontWeight.bold,fontSize: 15),),
-                                     ]
-                                 ),
-                               ],
-                             ),
-                             pd.SizedBox(height: 100),
-                             pd.Divider(thickness: 3,color: PdfColors.black,),
-                             pd.SizedBox(height: 10),
-                             pd.Table(
-                               children: [
-                                 pd. TableRow(
-                                     children: [
-                                       pd.Text('Price=${price}\n',style: pd.TextStyle(color: PdfColors.black,fontSize: 15,fontWeight: pd.FontWeight.bold),),
-                                       pd. Text('Gst=${gst}\n',style: pd.TextStyle(color: PdfColors.black,fontSize: 15,fontWeight: pd.FontWeight.bold),),
-                                       pd.Text('Total=${total}',style: pd.TextStyle(color: PdfColors.black,fontSize: 15,fontWeight: pd.FontWeight.bold),)
-                                     ]
-                                 )
-                               ],
-                             ),
-                             pd.SizedBox(height: 50),
-                             pd.Padding(
-                               padding:  pd.EdgeInsets.only(right: 210),
-                               child: pd.Column(
+                               pd.SizedBox(height: 100),
+                               pd.Divider(thickness: 3,color: PdfColors.black,),
+                               pd.SizedBox(height: 10),
+                               pd.Table(
                                  children: [
-                                   pd.Text("Terms & conditions",style: pd.TextStyle(color: PdfColors.black,fontSize: 18,fontWeight: pd.FontWeight.bold),),
-                                   pd. Text('(1).bika hua maal return nhi liya jayega',style: pd.TextStyle(color: PdfColors.black,fontSize: 18,fontWeight: pd.FontWeight.bold),),
-                                   pd.Text('(2).ravivare dukan band resae',style: pd.TextStyle(color: PdfColors.black,fontSize: 18,fontWeight: pd.FontWeight.bold),),
-                                   pd.Text('(3). Payment 7 din k aandar dena hoga',style: pd.TextStyle(color: PdfColors.black,fontSize: 18,fontWeight: pd.FontWeight.bold),),
-
+                                   pd. TableRow(
+                                       children: [
+                                         pd.Text('Price=${price}\n',style: pd.TextStyle(color: PdfColors.black,fontSize: 15,fontWeight: pd.FontWeight.bold),),
+                                         pd. Text('Gst=${gst}\n',style: pd.TextStyle(color: PdfColors.black,fontSize: 15,fontWeight: pd.FontWeight.bold),),
+                                         pd.Text('Total=${total}',style: pd.TextStyle(color: PdfColors.black,fontSize: 15,fontWeight: pd.FontWeight.bold),)
+                                       ]
+                                   )
                                  ],
                                ),
+                               pd.SizedBox(height: 50),
+                               pd.Padding(
+                                 padding:  pd.EdgeInsets.only(right: 210),
+                                 child: pd.Column(
+                                   children: [
+                                     pd.Text("Terms & conditions",style: pd.TextStyle(color: PdfColors.black,fontSize: 18,fontWeight: pd.FontWeight.bold),),
+                                     pd. Text('(1).bika hua maal return nhi liya jayega',style: pd.TextStyle(color: PdfColors.black,fontSize: 18,fontWeight: pd.FontWeight.bold),),
+                                     pd.Text('(2).ravivare dukan band resae',style: pd.TextStyle(color: PdfColors.black,fontSize: 18,fontWeight: pd.FontWeight.bold),),
+                                     pd.Text('(3). Payment 7 din k aandar dena hoga',style: pd.TextStyle(color: PdfColors.black,fontSize: 18,fontWeight: pd.FontWeight.bold),),
 
-                             ),
-                             InkWell(
-                                 onTap: () {
-                                   Navigator.pushNamed(context, '/pdf');
+                                   ],
+                                 ),
 
-                                 },child: Icon(Icons.picture_as_pdf,size: 40,)),
+                               ),
 
-                           ],
-                         ),
 
-                         ); // Center
-                       })
-                       await Printing.layoutPdf(onlayout:(format) => pdf.save(),
-                   );
+                             ],
+                           ),
 
-                   ); // Page
-                 },child: Icon(Icons.picture_as_pdf,size: 40,color: Colors.blue,)),
-
+                           ); // Center
+                         }),
+                     ); // P
+                     await Printing.layoutPdf(
+                         onLayout: (PdfPageFormat format) async => pdf.save());// age
+                   },
+                    icon: Icon(Icons.picture_as_pdf,size: 40,color: Colors.blue,)),
+              ),
             ],
       ),
     );
